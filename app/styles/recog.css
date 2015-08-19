@@ -1,0 +1,27 @@
+#loupe {
+  height: auto;
+  width: auto;
+  max-height: 150px;
+}
+
+.marketing h4 {
+  color: black;
+}
+
+#selectedImage {
+  border: 0px;
+  margin: 20px;
+  height: auto;
+  width: auto;
+  max-height: 300px;
+  max-width: 300px;
+  display: none;
+}
+
+#input-1, .colContent {
+  margin-top: 10px;
+}
+
+#iconSearch {
+  margin-left: 15px;
+}

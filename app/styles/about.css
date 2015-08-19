@@ -12,11 +12,18 @@
 }
 
 #technos img {
+  opacity: 0.6;
   height: auto;
   width: auto;
   max-height: 100px;
   max-width: 200px;
   margin: 20px;
+  border: 0px;
+  transition: all .2s ease-in-out;
+}
+
+#technos img:hover {
+  transform: scale(1.1);
 }
 
 .container .jumbotron, .container-fluid .jumbotron {
