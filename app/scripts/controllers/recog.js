@@ -4,6 +4,10 @@ app.controller('RecogCtrl', function ($scope, $rootScope, $http, RecogFactory) {
   $scope.awesomeThings = ['HTML5 Boilerplate', 'AngularJS', 'Karma'];
 
   var imageURL = null;
+  var json_to_send = {
+    image: "image",
+    organ: "organ"
+  };
 
   var readURL = function (input, $scope, $timeout) {
     if (input.files && input.files[0]) {
@@ -29,10 +33,14 @@ app.controller('RecogCtrl', function ($scope, $rootScope, $http, RecogFactory) {
     });
 
   $scope.analyzeImage = function () {
-    if (imageURL != null) {
-      window.alert($scope.selectedOrgan);
+    if (imageURL != null && $scope.selectedOrgan != undefined) {
+      BootstrapDialog.show({
+        message: $scope.selectedOrgan
+      });
     } else {
-      window.alert("Merci de sélectionner une image !");
+      BootstrapDialog.show({
+        message: "Merci de sélectionner une image et de préciser un organe."
+      });
     }
   }
 });
