@@ -8,6 +8,6 @@ app.controller('AboutCtrl', function ($scope, $rootScope) {
   });
 
   $("#technos img").mouseleave(function () {
-    $(this).css("opacity", 0.6);
+    $(this).css("opacity", 0.7);
   });
 });

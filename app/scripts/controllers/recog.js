@@ -8,8 +8,8 @@ app.controller('RecogCtrl', function ($scope, $rootScope) {
       var reader = new FileReader();
 
       reader.onload = function (e) {
-        $('#selectedImage').attr('src', e.target.result);
-        $('#selectedImage').css("display", "block");
+        $('#selected-image').attr('src', e.target.result);
+        $('#selected-image').css("display", "block");
       };
 
       reader.readAsDataURL(input.files[0]);

@@ -1,4 +1,4 @@
-<div style="text-align: center">
+<div class="centered">
   <img id="loupe" src="images/loupe.png" alt="plante">
 </div>
 
@@ -6,29 +6,29 @@
 
   <form id="imageForm" runat="server">
 
-    <div class="col-md-4">
+    <div class="centered col-md-4">
       <label class="control-label">1. Sélectionnez une photo à analyser</label>
       <input accept=".jpg" id="input-1" type="file" class="file"/>
-      <img id="selectedImage" src="#" alt="your image" ng-hide="imageLoaded"/>
+      <img id="selected-image" src="#" alt="your image"/>
     </div>
 
-    <div class="col-md-4">
+    <div class="centered col-md-4">
       <label class="control-label">2. Précisez l'organe présent sur votre photo</label>
 
-      <div class="colContent">
+      <div class="col-content">
         <select name="cars">
-          <option value="volvo">Feuille</option>
-          <option value="saab">Fleur</option>
-          <option value="opel">Tronc</option>
-          <option value="audi">Branche</option>
+          <option value="leaf">Feuille</option>
+          <option value="flower">Fleur</option>
+          <option value="fruit">Fruit</option>
+          <option value="stem">Tronc</option>
+          <option value="entire">Arbre</option>
         </select>
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="centered col-md-4">
       <label class="control-label">3. Lancez l'analyse !</label>
-
-      <div class="colContent">
+      <div class="col-content">
         <button class="btn btn-md btn-success">Analyser ma photo<span id="iconSearch" class="glyphicon glyphicon-search"></span></button>
       </div>
     </div>
