@@ -1,5 +1,5 @@
 <div class="centered">
-  <img id="loupe" src="images/loupe.png" alt="plante">
+  <img id="loupe" src="../assets/loupe.png" alt="plante">
 </div>
 
 <div class="row marketing">
@@ -8,7 +8,7 @@
 
     <div class="centered col-md-4">
       <label class="control-label">1. Sélectionnez une photo à analyser</label>
-      <input accept=".jpg" id="input-1" type="file" class="file"/>
+      <input ng-model="image" accept=".jpg" id="input-1" type="file" class="file"/>
       <img id="selected-image" src="#" alt="your image"/>
     </div>
 
@@ -16,12 +16,8 @@
       <label class="control-label">2. Précisez l'organe présent sur votre photo</label>
 
       <div class="col-content">
-        <select name="cars">
-          <option value="leaf">Feuille</option>
-          <option value="flower">Fleur</option>
-          <option value="fruit">Fruit</option>
-          <option value="stem">Tronc</option>
-          <option value="entire">Arbre</option>
+        <select ng-model="selectedOrgan" name="organ">
+          <option ng-repeat="organ in organs" value="{{organ}}">{{organ}}</option>
         </select>
       </div>
     </div>
@@ -29,7 +25,7 @@
     <div class="centered col-md-4">
       <label class="control-label">3. Lancez l'analyse !</label>
       <div class="col-content">
-        <button class="btn btn-md btn-success">Analyser ma photo<span id="iconSearch" class="glyphicon glyphicon-search"></span></button>
+        <button ng-click="analyzeImage()" class="btn btn-md btn-success">Analyser ma photo<span id="iconSearch" class="glyphicon glyphicon-search"></span></button>
       </div>
     </div>
 
