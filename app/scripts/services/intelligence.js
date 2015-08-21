@@ -7,9 +7,9 @@
 app.factory('RecogFactory', function ($http, $q, CONSTANTS) {
   var factory = {
 
-    sendOrgan: function (json_to_send) {
+    sendOrgan: function (image) {
       var deferred = $q.defer();
-      $http.post(CONSTANTS.serverAddress + CONSTANTS.recogPath, json_to_send).success(function (data) {
+      $http.post(CONSTANTS.serverAddress + CONSTANTS.recogPath, image).success(function (data) {
         if (data.status == 'success') {
           deferred.resolve(data.data);
         } else {

@@ -6,6 +6,6 @@
 
 angular.module('frontPlantsRecogApp')
   .constant('CONSTANTS', {
-    serverAddress: 'http://54.154.153.9:8080/',
+    serverAddress: 'http://134.59.132.75:3000/',
     recogPath: 'recog/upload/',
   });

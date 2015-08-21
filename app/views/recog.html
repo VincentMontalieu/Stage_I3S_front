@@ -4,11 +4,11 @@
 
 <div class="row marketing">
 
-  <form id="imageForm" runat="server">
+  <form action="http://134.59.132.75:3000/recog/upload/" method="post" id="imageForm" runat="server" enctype="multipart/form-data">
 
     <div class="centered col-md-4">
       <label class="control-label">1. Sélectionnez une photo à analyser</label>
-      <input ng-model="image" accept=".jpg" id="input-1" type="file" class="file"/>
+      <input ng-model="image" accept=".jpg" id="input-1" type="file" name="image" class="file"/>
       <img id="selected-image" src="#" alt="your image"/>
     </div>
 
@@ -25,7 +25,7 @@
     <div class="centered col-md-4">
       <label class="control-label">3. Lancez l'analyse !</label>
       <div class="col-content">
-        <button ng-click="analyzeImage()" class="btn btn-md btn-success">Analyser ma photo<span id="iconSearch" class="glyphicon glyphicon-search"></span></button>
+          <input ng-href="#/recog" class="btn btn-md btn-success" type="submit" value="Analyser ma photo"/>
       </div>
     </div>
 

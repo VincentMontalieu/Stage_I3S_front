@@ -34,9 +34,16 @@ app.controller('RecogCtrl', function ($scope, $rootScope, $http, RecogFactory) {
 
   $scope.analyzeImage = function () {
     if (imageURL != null && $scope.selectedOrgan != undefined) {
-      BootstrapDialog.show({
-        message: $scope.selectedOrgan
-      });
+      var imageToSend = $scope.image;
+      RecogFactory.sendOrgan(imageToSen).then(function (data) {
+        BootstrapDialog.show({
+          message: data
+        });
+      }, function (err) {
+        BootstrapDialog.show({
+          message: "Erreur serveur... "
+        });
+      })
     } else {
       BootstrapDialog.show({
         message: "Merci de sélectionner une image et de préciser un organe."
