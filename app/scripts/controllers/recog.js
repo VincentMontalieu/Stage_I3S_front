@@ -4,6 +4,7 @@ app.controller('RecogCtrl', function ($scope, $rootScope, $http, CONSTANTS) {
   $scope.awesomeThings = ['HTML5 Boilerplate', 'AngularJS', 'Karma'];
 
   var imageURL = null;
+  var imageDialog;
 
   $http.get('assets/organs.json')
     .then(function (res) {
@@ -15,26 +16,14 @@ app.controller('RecogCtrl', function ($scope, $rootScope, $http, CONSTANTS) {
       url: CONSTANTS.serverAddress + CONSTANTS.recogPath,
       dataType: 'json',
       success: function (data) {
-        BootstrapDialog.show({
-          message: data.data,
-          buttons: [{
-            icon: 'glyphicon glyphicon-send',
-            label: 'Send ajax request',
-            cssClass: 'btn-primary',
-            autospin: true,
-            action: function (dialogRef) {
-            }
-          }, {
-            label: 'Close',
-            action: function (dialogRef) {
-              dialogRef.close();
-            }
-          }]
-        });
+
       },
       error: function (error) {
+        BootstrapDialog.closeAll();
         BootstrapDialog.show({
-          message: "Erreur serveur... Merci de réessayer."
+          type: BootstrapDialog.TYPE_DANGER,
+          title: "ERREUR",
+          message: "Merci de réessayer."
         });
       }
     });
@@ -61,8 +50,17 @@ app.controller('RecogCtrl', function ($scope, $rootScope, $http, CONSTANTS) {
   $scope.analyzeImage = function () {
     if (imageURL != null && $scope.selectedOrgan != undefined) {
       $("#imageForm").submit();
+      imageDialog = BootstrapDialog.show({
+        title: "ANALYSE DE VOTRE PHOTO",
+        message: function(dialogRef) {
+          var $message = $('<div><p>Envoi de la photo terminé.</p></div><div><p>Analyse de la photo en cours...</p></div><div style="text-align: center"><i class="fa fa-spinner fa-pulse fa-4x"></i></div>');
+          return $message;
+        }
+      });
     } else {
       BootstrapDialog.show({
+        type: BootstrapDialog.TYPE_WARNING,
+        title: "ATTENTION",
         message: "Merci de sélectionner une image et de préciser un organe."
       });
     }
