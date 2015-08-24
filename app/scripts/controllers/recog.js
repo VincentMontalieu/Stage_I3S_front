@@ -1,13 +1,44 @@
 'use strict';
 
-app.controller('RecogCtrl', function ($scope, $rootScope, $http, RecogFactory) {
+app.controller('RecogCtrl', function ($scope, $rootScope, $http, CONSTANTS) {
   $scope.awesomeThings = ['HTML5 Boilerplate', 'AngularJS', 'Karma'];
 
   var imageURL = null;
-  var json_to_send = {
-    image: "image",
-    organ: "organ"
-  };
+
+  $http.get('assets/organs.json')
+    .then(function (res) {
+      $scope.organs = res.data;
+    });
+
+  $(document).ready(function () {
+    $("#imageForm").ajaxForm({
+      url: CONSTANTS.serverAddress + CONSTANTS.recogPath,
+      dataType: 'json',
+      success: function (data) {
+        BootstrapDialog.show({
+          message: data.data,
+          buttons: [{
+            icon: 'glyphicon glyphicon-send',
+            label: 'Send ajax request',
+            cssClass: 'btn-primary',
+            autospin: true,
+            action: function (dialogRef) {
+            }
+          }, {
+            label: 'Close',
+            action: function (dialogRef) {
+              dialogRef.close();
+            }
+          }]
+        });
+      },
+      error: function (error) {
+        BootstrapDialog.show({
+          message: "Erreur serveur... Merci de réessayer."
+        });
+      }
+    });
+  });
 
   var readURL = function (input, $scope, $timeout) {
     if (input.files && input.files[0]) {
@@ -27,27 +58,13 @@ app.controller('RecogCtrl', function ($scope, $rootScope, $http, RecogFactory) {
     readURL(this);
   });
 
-  $http.get('assets/organs.json')
-    .then(function (res) {
-      $scope.organs = res.data;
-    });
-
   $scope.analyzeImage = function () {
     if (imageURL != null && $scope.selectedOrgan != undefined) {
-      var imageToSend = $scope.image;
-      RecogFactory.sendOrgan(imageToSen).then(function (data) {
-        BootstrapDialog.show({
-          message: data
-        });
-      }, function (err) {
-        BootstrapDialog.show({
-          message: "Erreur serveur... "
-        });
-      })
+      $("#imageForm").submit();
     } else {
       BootstrapDialog.show({
         message: "Merci de sélectionner une image et de préciser un organe."
       });
     }
-  }
+  };
 });
