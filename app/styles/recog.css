@@ -37,3 +37,7 @@
 .glyphicon-search {
   margin-left: 10px;
 }
+
+ol {
+  text-align: left;
+}

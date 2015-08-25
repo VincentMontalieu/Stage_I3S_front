@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('RecogCtrl', function ($scope, $rootScope, $http, CONSTANTS) {
+app.controller('RecogCtrl', function ($scope, $rootScope, $http, CONSTANTS, $anchorScroll, $location, $timeout) {
   $scope.awesomeThings = ['HTML5 Boilerplate', 'AngularJS', 'Karma'];
 
   var imageURL = null;
@@ -16,7 +16,10 @@ app.controller('RecogCtrl', function ($scope, $rootScope, $http, CONSTANTS) {
       url: CONSTANTS.serverAddress + CONSTANTS.recogPath,
       dataType: 'json',
       success: function (data) {
-
+        imageDialog.close();
+        $scope.$apply(function () {
+          $scope.responses = data.data;
+        });
       },
       error: function (error) {
         BootstrapDialog.closeAll();
@@ -51,6 +54,7 @@ app.controller('RecogCtrl', function ($scope, $rootScope, $http, CONSTANTS) {
     if (imageURL != null && $scope.selectedOrgan != undefined) {
       $("#imageForm").submit();
       imageDialog = BootstrapDialog.show({
+        closable: false,
         title: "ANALYSE DE VOTRE PHOTO",
         message: function(dialogRef) {
           var $message = $('<div><p>Envoi de la photo terminé.</p></div><div><p>Analyse de la photo en cours...</p></div><div style="text-align: center"><i class="fa fa-spinner fa-pulse fa-4x"></i></div>');

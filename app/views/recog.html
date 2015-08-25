@@ -26,7 +26,7 @@
   </form>
 
     <div class="centered col-md-4">
-      <label class="control-label">3. Lancez l'analyse !</label>
+      <label class="control-label">3. Lancez l'analyse</label>
 
       <div class="col-content">
         <button ng-click="analyzeImage()" class="btn btn-md btn-success">Analyser ma photo<span class="glyphicon glyphicon-search"></span>
@@ -34,6 +34,13 @@
       </div>
     </div>
 
+</div>
 
-
+<div id="resultats" class="row marketing">
+  <div class="centered col-md-4 col-md-offset-4">
+    <label class="control-label">4. Résultats</label>
+    <ol>
+      <li ng-repeat="response in responses">{{response}}</li>
+    </ol>
+  </div>
 </div>
