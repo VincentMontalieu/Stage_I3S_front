@@ -6,38 +6,39 @@
 
   <form method="post" id="imageForm" runat="server" enctype="multipart/form-data">
 
-    <div class="centered col-md-4">
+    <div class="centered col-md-6">
       <label class="control-label">1. Sélectionnez une photo à analyser</label>
       <input ng-model="image" accept=".jpg" id="input-1" type="file" name="image" class="file"/>
-      <img id="selected-image" src="#" alt="your image"/>
+      <img id="selected-image" src="../assets/votre_image_ici.jpg" alt="your image"/>
     </div>
 
-    <div class="centered col-md-4">
+    <div class="centered col-md-6">
       <label class="control-label">2. Précisez l'organe présent sur votre photo</label>
 
       <div class="col-content">
         <select ng-model="selectedOrgan" name="organ">
-          <option ng-repeat="organ in organs" value="{{organ}}">{{organ}}</option>
+          <option ng-repeat="organ in organs" value="{{organ.value}}">{{organ.select}}</option>
         </select>
       </div>
-
     </div>
 
   </form>
 
-    <div class="centered col-md-4">
-      <label class="control-label">3. Lancez l'analyse</label>
-
-      <div class="col-content">
-        <button ng-click="analyzeImage()" class="btn btn-md btn-success">Analyser ma photo<span class="glyphicon glyphicon-search"></span>
-        </button>
-      </div>
-    </div>
-
 </div>
 
-<div id="resultats" class="row marketing">
-  <div class="centered col-md-4 col-md-offset-4">
+<div class="row marketing">
+
+  <div class="centered col-md-6">
+    <label class="control-label">3. Lancez l'analyse</label>
+
+    <div class="col-content">
+      <button ng-click="analyzeImage()" class="btn btn-md btn-success">Analyser ma photo<span
+        class="glyphicon glyphicon-search"></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="resultats" class="centered col-md-6">
     <label class="control-label">4. Résultats</label>
     <ol>
       <li ng-repeat="response in responses">{{response}}</li>
