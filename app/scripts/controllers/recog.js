@@ -18,7 +18,7 @@ app.controller('RecogCtrl', function ($scope, $rootScope, $http, CONSTANTS, $anc
       success: function (data) {
         imageDialog.close();
         $scope.$apply(function () {
-          $scope.responses = data.data;
+          $scope.responses = data;
         });
       },
       error: function (error) {
