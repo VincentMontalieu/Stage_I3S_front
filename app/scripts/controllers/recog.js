@@ -13,7 +13,7 @@ app.controller('RecogCtrl', function ($scope, $rootScope, $http, CONSTANTS, $anc
 
   $(document).ready(function () {
     $("#imageForm").ajaxForm({
-      url: CONSTANTS.serverAddress + CONSTANTS.recogPath,
+      url: CONSTANTS.serverAddress + CONSTANTS.serverPort + CONSTANTS.recogPath,
       dataType: 'json',
       success: function (data) {
         imageDialog.close();

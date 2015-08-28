@@ -70,7 +70,7 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 1993,
+        port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: '0.0.0.0',
         livereload: 35729
@@ -246,7 +246,7 @@ module.exports = function (grunt) {
           '<%= yeoman.dist %>/styles'
         ],
         patterns: {
-          js: [[/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to assets']]
+          js: [[/(assets\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to assets']]
         }
       }
     },
@@ -372,6 +372,11 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           cwd: 'bower_components/bootstrap/dist',
+          src: 'fonts/*',
+          dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: 'bower_components/fontawesome/',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
         }]
