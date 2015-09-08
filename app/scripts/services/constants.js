@@ -6,7 +6,7 @@
 
 angular.module('frontPlantsRecogApp')
   .constant('CONSTANTS', {
-    serverAddress: 'http://134.59.132.75',
+    serverAddress: 'http://sparks-vm7.i3s.unice.fr',
     serverPort: ':3000/',
     recogPath: 'recog/upload/',
   });
