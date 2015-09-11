@@ -2,21 +2,5 @@
   {
     "select": "Feuille",
     "value": "leaf"
-  },
-  {
-    "select": "Fleur",
-    "value": "flower"
-  },
-  {
-    "select": "Fruit",
-    "value": "fruit"
-  },
-  {
-    "select": "Branche",
-    "value": "stem"
-  },
-  {
-    "select": "Arbre",
-    "value": "entire"
   }
 ]
