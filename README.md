@@ -5,9 +5,9 @@ version 0.12.1.
 
 ## Build & development
 
-Run `grunt` for building and `grunt serve` for previewing development version.
-Run `grunt build` for building prod version. You can then copy the content of *dist* folder into your HTTP server.
-Run `grunt serve:dist` for previewing production version.
+* Run `grunt` for building and `grunt serve` for previewing development version.
+* Run `grunt build` for building prod version. You can then copy the content of *dist* folder into your HTTP server.
+* Run `grunt serve:dist` for previewing production version.
 
 ## Testing
 
